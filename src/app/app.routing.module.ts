@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 
 import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
-import { SignInComponent } from './home/signin/signin.component';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: SignInComponent
+    pathMatch: 'full',
+    redirectTo: 'home' //match com a string exata: home
+  },
+  {
+    path: 'home',
+    loadChildren: './home/home.module#HomeModule'
   },
   {
     path: 'user/:userName',
@@ -30,6 +35,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  // imports: [ RouterModule.forRoot(routes, { useHash: true }) ],
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })

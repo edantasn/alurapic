@@ -13,7 +13,7 @@ import { DarkenOnHoverModule } from '../shared/components/directives/darken-on-h
       PhotoModule,
       PhotoFormModule,
       PhotoListModule,
-      DarkenOnHoverModule
+      DarkenOnHoverModule,
     ]
 })
 
